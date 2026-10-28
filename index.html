@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>ISR-auto — calcul de l'impôt sur le revenu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="ISR-auto : calcul automatique de l'impôt sur le revenu, usage personnel.">
+<meta name="theme-color" content="#1f2a30">
+<meta name="color-scheme" content="light dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ISR-auto">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>try{var t=(JSON.parse(localStorage.getItem('isr-auto:v1'))||{}).ui;if(t&&t.theme)document.documentElement.setAttribute('data-theme',t.theme)}catch(e){}</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <svg viewBox="0 0 512 512" aria-hidden="true">
+      <rect width="512" height="512" rx="112" fill="#2b3a42"/>
+      <rect x="104" y="288" width="82" height="112" rx="14" fill="#6f8f94"/>
+      <rect x="215" y="212" width="82" height="188" rx="14" fill="#2bb7a5"/>
+      <rect x="326" y="120" width="82" height="280" rx="14" fill="#fff"/>
+    </svg>
+    <div><b>ISR-auto</b><small>Impôt sur le revenu</small></div>
+  </div>
+  <div class="pay"><small id="hdrLabel">À payer</small><strong id="hdrVal">0 G</strong></div>
+  <button id="btnTheme" class="themebtn" type="button" aria-label="Changer de thème"></button>
+</header>
+
+<main id="app">
+  <section class="tab" id="tab-id" hidden></section>
+  <section class="tab" id="tab-revenus" hidden></section>
+  <section class="tab" id="tab-deductions" hidden></section>
+  <section class="tab" id="tab-retenues" hidden></section>
+  <section class="tab" id="tab-resultat" hidden></section>
+</main>
+
+<nav class="nav" aria-label="Sections">
+  <button data-tab="id"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Identité</button>
+  <button data-tab="revenus"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg>Revenus</button>
+  <button data-tab="deductions"><svg viewBox="0 0 24 24"><path d="M3 7l6 6 4-4 8 8"/><path d="M15 17h6v-6"/></svg>Déductions</button>
+  <button data-tab="retenues"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>Retenues</button>
+  <button data-tab="resultat"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h1M12 12h1M16 12h0M8 16h1M12 16h1M16 16h0"/></svg>Résultat</button>
+</nav>
+
+<div id="recap"></div>
+<input type="file" id="fileImport" accept="application/json,.json" hidden>
+<noscript><p style="padding:20px">ISR-auto a besoin de JavaScript pour fonctionner.</p></noscript>
+
+<script src="engine.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
